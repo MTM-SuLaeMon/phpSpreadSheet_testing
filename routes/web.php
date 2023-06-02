@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DownloadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+Route::group(['prefix' => 'api/version1'], function () {
+    Route::post('/download',[DownloadController::class,'download'])->name('download');
+    Route::post('/download2',[DownloadController::class,'download2'])->name('download2');
+    Route::post('/download3',[DownloadController::class,'download3'])->name('download3');
 });

@@ -10,7 +10,7 @@ use App\Service\ExcelService;
 
 use Illuminate\Http\Request;
 
-class UploadController extends Controller
+class DownloadController extends Controller
 {
     public function download(Request $request){
         // get file name
@@ -61,7 +61,7 @@ class UploadController extends Controller
 
     public function download3(Request $request){
         $text = $request->text;
-        $select = $request->select;
+        $selectedData = $request->select;
         $color = $request->color;
         // get file name
         $fileName = $request->file('file')->getClientOriginalName();
@@ -75,8 +75,8 @@ class UploadController extends Controller
                 // check tagString and get option
                 $tagOption = ExcelService::isTagString($cell->getValue());
                 // write text with option and color
-                if($tagOption === $select){
-                    $cell->setValue($text.$select);
+                if($tagOption === $selectedData){
+                    $cell->setValue($text.$selectedData);
                     $cell->getStyle()->getFill()->setFillType(Fill::FILL_SOLID)->getStartColor()->setARGB($color);
                 }
             }

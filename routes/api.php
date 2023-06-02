@@ -2,7 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UploadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +17,3 @@ use App\Http\Controllers\UploadController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::post('/download',[UploadController::class,'download'])->name('download');
-Route::post('/download2',[UploadController::class,'download2'])->name('download2');
-Route::post('/download3',[UploadController::class,'download3'])->name('download3');
